@@ -10,14 +10,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id = "quiz-container">
+    <!--the introduction to the quiz-->
+    <div id = "introPage">
         <h1 id="start">Let's test your JavaScript knowledge!</h1>
-            <p id="rules">How much do you really know about JavaScript? We're going to find out. Once you start this quiz, you will answer each question.</p>
+            <p id="intro">How much do you really know about JavaScript? We're going to find out. Once you start this quiz, you will answer each question. 
+                For each correct answer you will have 5 points added to your score.
+            </p>
+                <!--button to start the quiz and begin the loop-->
+                <button id="startButton" class="btn active" type="button">Let's go!</button>
+    </div>
+    <!--page for questions-->
+    <div id = "questionsPage">
+        <h2 id = "questionTitle"></h2>
+        <!--making buttons for the responses-->
+        <ul>
+            <li><button type="button" class="btn questionButton" id="optionOne"></button></li>
+            <li><button type="button" class="btn questionButton" id="optionTwo"></button></li>
+            <li><button type="button" class="btn questionButton" id="optionThree"></button></li>
+            <li><button type="button" class="btn questionButton" id="optionFour"></button></li>
+        </ul>
 
     </div>
 
-    <div id = "results-container">
+    <div id = "resultsPage">
+        <h3 id = ""
 
     </div>
     
