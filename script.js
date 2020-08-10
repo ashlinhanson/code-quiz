@@ -1,6 +1,6 @@
-const quizBox = document.querySelector(".quiz-container");
-const submitButton = document.querySelector(".submit");
-const resultsBox = document.querySelector(".results-container");
+const quizBox = document.getElementById(".quiz-container");
+const submitButton = document.getElementId(".submit");
+const resultsBox = document.getElementById(".results-container");
 
 
 //function to keep score during the quiz
@@ -27,19 +27,19 @@ var quizQs = [
         question : "What is a Boolean?",
         options : {
             a: "a true or false statement",
-            b: "something",
-            c: "something",
+            b: "a conditional statement",
+            c: "",
             d: "something"
         },
         rightAnswer: "a"
     },
    {
-       question : "Something about something?",
+       question : "Who invented JavaScript?",
        options : {
-            a: "something",
-            b: "something",
-            c: "something",
-            d: "something"
+            a: "Elon Musk",
+            b: "Mitchell Baker",
+            c: "Bill Gates",
+            d: "Brenden Eich"
       },
        rightAnswer: "d"
    },
