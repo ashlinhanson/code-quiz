@@ -10,16 +10,16 @@ var questionsPage = document.getElementById("questionsPage");
 var questionHead = document.getElementById("questionHead");
 // answer choice buttons/variables
 var answerDiv = document.getElementById("answers");
-var optionB = document.getElementById("#second");
-var optionC = document.getElementById("#third");
-var optionD = document.getElementById("#fourth");
-var optionSelection = document.getElementById("#optionSelection");
+var optionB = document.getElementById("second");
+var optionC = document.getElementById("third");
+var optionD = document.getElementById("fourth");
+var optionSelection = document.getElementById("optionSelection");
 var rightOption
 
 // results variables
-var resultsPage = document.getElementById("#resultsPage");
-var resultsHead = document.getElementById("#resultsHead");
-var totalScore = document.getElementById("#totalScore");
+var resultsPage = document.getElementById("resultsPage");
+var resultsHead = document.getElementById("resultsHead");
+var totalScore = document.getElementById("totalScore");
 var currentQIndex = 0;
 //create an array for questions
 var quizQs = [
