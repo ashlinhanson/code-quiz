@@ -1,15 +1,24 @@
-const quizBox = document.getElementById(".quiz-container");
-const submitButton = document.getElementId(".submit");
-const resultsBox = document.getElementById(".results-container");
+// Declaring some variables
+// first page
+var introPage = document.getElementById("#introPage");
+var introHead = document.getElementById("#introHead");
+var introP = document.getElementById("#introP");
+var startButton = document.getElementById("#startButton");
 
+// question pages
+var questionsPage = document.getElementById("#questionsPage");
+var questionHead = document.getElementById("#questionHead");
+// answer choice buttons/variables
+var optionA = document.getElementById("#optionA");
+var optionB = document.getElementById("#optionB");
+var optionC = document.getElementById("#optionC");
+var optionD = document.getElementById("#optionD");
+var optionSelection = document.getElementById("#optionSelection");
 
-//function to keep score during the quiz
-var score = 0; //this holds data for the score numbers
-var scoreKeeper = function (num) {
-
-}
-//function to build the quiz
-function createQuiz()
+// results variables
+var resultsPage = document.getElementById("#resultsPage");
+var resultsHead = document.getElementById("#resultsHead");
+var totalScore = document.getElementById("#totalScore");
 
 //create an array for questions
 var quizQs = [
@@ -84,3 +93,7 @@ var quizQs = [
     rightAnswer: "d"
    },
 ];
+
+
+//function to keep score during the quiz
+var score = 0; //this holds data for the score numbers 
