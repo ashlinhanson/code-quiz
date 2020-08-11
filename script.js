@@ -9,11 +9,12 @@ var startButton = document.getElementById("#startButton");
 var questionsPage = document.getElementById("#questionsPage");
 var questionHead = document.getElementById("#questionHead");
 // answer choice buttons/variables
-var optionA = document.getElementById("#optionA");
-var optionB = document.getElementById("#optionB");
-var optionC = document.getElementById("#optionC");
-var optionD = document.getElementById("#optionD");
+var optionA = document.getElementById("#first");
+var optionB = document.getElementById("#second");
+var optionC = document.getElementById("#third");
+var optionD = document.getElementById("#fourth");
 var optionSelection = document.getElementById("#optionSelection");
+var rightOption
 
 // results variables
 var resultsPage = document.getElementById("#resultsPage");
@@ -25,72 +26,42 @@ var quizQs = [
     {
         question : "What does JavaScript control?",
         options : {
-            a: "Structure",
-            b: "Style",
-            c: "Behavior",
-            d: "Aesthetic"
+            "first" : "a. Structure",
+            "second" : "b. Style",
+            "third" : "c. Behavior",
+            "fourth" : "d. Aesthetic",
+            "rightOption" : "c. Behavior"
         },
-        rightAnswer: "c"
    },
    {
         question : "What is a Boolean?",
         options : {
-            a: "a true or false statement",
-            b: "a conditional statement",
-            c: "",
-            d: "something"
+            "first" : "a. A true or false statement",
+            "second" : "b. A conditional statement",
+            "third" : "c. Something",
+            "fourth" : "d. Something",
+            "rightOption" : "a. A true or false statement"
         },
-        rightAnswer: "a"
     },
    {
        question : "Who invented JavaScript?",
        options : {
-            a: "Elon Musk",
-            b: "Mitchell Baker",
-            c: "Bill Gates",
-            d: "Brenden Eich"
+            "first" : "a. Elon Musk",
+            "second" : "b. Mitchell Baker",
+            "third" : "c. Bill Gates",
+            "fourth" : "d. Brenden Eich",
+            "rightOption" : "d. Brenden Eich"
       },
-       rightAnswer: "d"
    },
    {
     question : "Something about something?",
     options : {
-         a: "something",
-         b: "something",
-         c: "something",
-         d: "something"
+            "first" : "a. something",
+            "second" : "b. something",
+            "third" : "c. something",
+            "fourth" : "d. something",
+            "rightOption" : ""
    },
-    rightAnswer: "d"
-   },
-   {
-    question : "Something about something?",
-    options : {
-         a: "something",
-         b: "something",
-         c: "something",
-         d: "something"
-   },
-    rightAnswer: "d"
-   },
-   {
-    question : "Something about something?",
-    options : {
-         a: "something",
-         b: "something",
-         c: "something",
-         d: "something"
-   },
-    rightAnswer: "d"
-   },
-   {
-    question : "Something about something?",
-    options : {
-         a: "something",
-         b: "something",
-         c: "something",
-         d: "something"
-   },
-    rightAnswer: "d"
    },
 ];
 
