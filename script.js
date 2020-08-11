@@ -1,15 +1,15 @@
 // Declaring some variables
 // first page
-var introPage = document.getElementById("#introPage");
-var introHead = document.getElementById("#introHead");
-var introP = document.getElementById("#introP");
-var startButton = document.getElementById("#startButton");
+var introPage = document.getElementById("introPage");
+var introHead = document.getElementById("introHead");
+var introP = document.getElementById("introP");
+var startButton = document.getElementById("startButton");
 
 // question pages
-var questionsPage = document.getElementById("#questionsPage");
-var questionHead = document.getElementById("#questionHead");
+var questionsPage = document.getElementById("questionsPage");
+var questionHead = document.getElementById("questionHead");
 // answer choice buttons/variables
-var optionA = document.getElementById("#first");
+var answerDiv = document.getElementById("answers");
 var optionB = document.getElementById("#second");
 var optionC = document.getElementById("#third");
 var optionD = document.getElementById("#fourth");
@@ -20,99 +20,110 @@ var rightOption
 var resultsPage = document.getElementById("#resultsPage");
 var resultsHead = document.getElementById("#resultsHead");
 var totalScore = document.getElementById("#totalScore");
-
+var currentQIndex = 0;
 //create an array for questions
 var quizQs = [
     {
-        "questionHead" : "What does JavaScript control?",
-            "first" : "a. Structure",
-            "second" : "b. Style",
-            "third" : "c. Behavior",
-            "fourth" : "d. Aesthetic",
-            "rightOption" : "c. Behavior"
+        question : "What does JavaScript control?",
+            choices : ["a. Structure", "b. Style", "c. Behavior", "d. Aesthetic"],
+            rightOption : "c. Behavior"
     },{
-        "questionHead" : "What is a Boolean?",
-            "first" : "a. A true or false statement",
-            "second" : "b. A conditional statement",
-            "third" : "c. Something",
-            "fourth" : "d. Something",
-            "rightOption" : "a. A true or false statement"
+        question : "What is a Boolean?",
+        choices : ["a. A true or false statement", "b. A conditional statement", "c. Something", "d. Something"],
+            rightOption : "a. A true or false statement"
     },{
-            "questionHead" : "Who invented JavaScript?",
-            "first" : "a. Elon Musk",
-            "second" : "b. Mitchell Baker",
-            "third" : "c. Bill Gates",
-            "fourth" : "d. Brenden Eich",
-            "rightOption" : "d. Brenden Eich"
-      },{
-            "questionHead" : "Something about something?",
-            "first" : "a. something",
-            "second" : "b. something",
-            "third" : "c. something",
-            "fourth" : "d. something",
-            "rightOption" : "something"
-        }
+        question : "Who invented JavaScript?",
+        choices : ["a. Elon Musk", "b. Mitchell Baker", "c. Bill Gates", "d. Brenden Eich"],
+            rightOption : "d. Brenden Eich"
+      }
 ];
+
+// for (i = 0; i < quizQs.length; i++){
+//     console.log(quizQs[i].question)
+// }
+function showQuestions() { 
+    currentQuestion = quizQs[currentQIndex]; //global variable
+    questionHead.innerHTML = currentQuestion.question;
+    for (i = 0; i < currentQuestion.choices.length; i++){
+        console.log(currentQuestion.choices[i])
+        answerDiv.innerHTML = "<p>"+currentQuestion.choices[i]+"</p>";
+    }
+}
+showQuestions();
+
+function checkAnswer(userAnswer){
+    if(userAnswer == currentQuestion.rightOption){
+        console.log("correct!");
+        currentQIndex++;
+    }else{
+        console.log("incorrect!");
+        currentQIndex++;
+    }
+
+}
+
+// checkAnswer()
+
 
 
 //function to keep score during the quiz
-var score = 0; 
+// var score = 0; 
 
 
 
-// function to display the introduction page
-function introductionPage() {
-    introPage.style.display = "block";
-    introHead.style.display = "block";
-    questionsPage.style.display = "none";
-    questionHead.style.display = "none";
-    resultsPage.style.display = "none";
-    resultsHead.style.display = "none";
-}
+// // function to display the introduction page
+// function introductionPage() {
+//     introPage.style.display = "block";
+//     introHead.style.display = "block";
+//     questionsPage.style.display = "none";
+//     questionHead.style.display = "none";
+//     resultsPage.style.display = "none";
+//     resultsHead.style.display = "none";
+// }
 
-//function to start the quiz
-function quizStart() {
-    questionsPage.style.display = "block";
-    questionHead.style.display = "block";
-}
-//show questions
-function questionDisplay() {
+// //function to start the quiz
+// function quizStart() {
+//     questionsPage.style.display = "block";
+//     questionHead.style.display = "block";
+// }
+// //show questions
+// function questionDisplay() {
   
 
-//check user input for the right option
-function checkOption(event) {
+// //check user input for the right option
+// function checkOption(event) {
     
-}
+// }
 
-//results page
-
-
-
-//input initials
+// //results page
 
 
-//scoreboard
+
+// //input initials
 
 
-//EVENT LISTENERS 
-function questionDisplay(){
-    optionA.addEventListener("click", function (event){
-        checkOption(event);
-    })
-    optionB.addEventListener("click", function (event){
-        checkOption(event);
-    })
-    optionC.addEventListener("click", function (event){
-        checkOption(event);
-    })
-    optionD.addEventListener("click", function (event){
-        checkOption(event);
-    })
-}
+// //scoreboard
 
-function quizStart(){
-    startButton.addEventListener("click", function(){
-        quizStart()
-        console.log("start");
-    })
-}
+
+// //EVENT LISTENERS 
+// function questionDisplay(){
+//     optionA.addEventListener("click", function (event){
+//         checkOption(event);
+//     })
+//     optionB.addEventListener("click", function (event){
+//         checkOption(event);
+//     })
+//     optionC.addEventListener("click", function (event){
+//         checkOption(event);
+//     })
+//     optionD.addEventListener("click", function (event){
+//         checkOption(event);
+//     })
+// }
+
+// function quizStart(){
+//     startButton.addEventListener("click", function(){
+//         quizStart()
+//         console.log("start");
+//     })
+// }
