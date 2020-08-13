@@ -38,60 +38,80 @@ var quizQs = [
 // for (i = 0; i < quizQs.length; i++){
 //     console.log(quizQs[i].question)
 // }
+//hides questions while on intro page.
+function hideQuestions() {
+    questionsPage.style.display = "none";
+}
+
+hideQuestions();
+
+//make intro page hidden to display questions
+document.getElementById("startButton").addEventListener("click", function (){
+    introPage.style.display = "none";
+    window.setInterval(quizTimer, 1000)
+    showQuestions();
+}
+)
+//timer for the quiz
+var time = 90;
+
+function quizTimer() {
+    time--;
+    document.getElementById("timerElement").innerHTML = time;
+    if (time === 0 || quizQs.length === questionsPage) {
+        clearInterval(timer);
+        quizOver();
+    }
+}
+//show the questions
 function showQuestions() { 
-    currentQuestion = quizQs[currentQIndex]; //global variable
+
+    //make the questions appear first
+    questionsPage.style.display = "block";
+    
+    let currentQuestion = quizQs[currentQIndex]; //global variable
     questionHead.innerHTML = currentQuestion.question;
     for (i = 0; i < currentQuestion.choices.length; i++){
         console.log(currentQuestion.choices[i])
         answerDiv.innerHTML = "<p>"+currentQuestion.choices[i]+"</p>";
     }
 }
-showQuestions();
 
-function checkAnswer(userAnswer){
-    if(userAnswer == currentQuestion.rightOption){
-        console.log("correct!");
-        currentQIndex++;
-    }else{
-        console.log("incorrect!");
-        currentQIndex++;
-    }
+// //check answer function
+// function checkAnswer(userAnswer){
+//     if(userAnswer == currentQuestion.rightOption){
+//         console.log("correct!");
+//         currentQIndex++;
+//     }else{
+//         console.log("incorrect!");
+//         currentQIndex++;
+//     }
 
-}
+// }
 
-// checkAnswer()
 
 
 
 //function to keep score during the quiz
 // var score = 0; 
 
+function hideResults() {
+    resultsPage.style.display = "none";
+}
+
+hideResults();
 
 
-// // function to display the introduction page
-// function introductionPage() {
-//     introPage.style.display = "block";
-//     introHead.style.display = "block";
-//     questionsPage.style.display = "none";
-//     questionHead.style.display = "none";
-//     resultsPage.style.display = "none";
-//     resultsHead.style.display = "none";
-// }
 
-// //function to start the quiz
-// function quizStart() {
-//     questionsPage.style.display = "block";
-//     questionHead.style.display = "block";
-// }
 // //show questions
 // function questionDisplay() {
   
 
 //check user input for the right option
-function checkOption(event) {
-    var option = event.currentTarget.dataset.checkAnswer
+// function checkOption(event) {
+//     var option = event.currentTarget.dataset.checkAnswer
     
-}
+// }
 
 // //results page
 
