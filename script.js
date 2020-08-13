@@ -9,9 +9,12 @@ var startButton = document.getElementById("startButton");
 var questionsPage = document.getElementById("questionsPage");
 var questionHead = document.getElementById("questionHead");
 // answer choice buttons/variables
-var answerDiv = document.getElementById("answers");
+var answerDiv1 = document.getElementById("first");
+var answerDiv2 = document.getElementById("second");
+var answerDiv3 = document.getElementById("third");
+var answerDiv4 = document.getElementById("fourth");
 var optionSelection = document.getElementById("optionSelection");
-var rightOption
+
 
 // results variables
 var resultsPage = document.getElementById("resultsPage");
@@ -34,6 +37,7 @@ var quizQs = [
             rightOption : "d. Brenden Eich"
       }
 ];
+var rightOption = quizQs.rightOption;
 
 // for (i = 0; i < quizQs.length; i++){
 //     console.log(quizQs[i].question)
@@ -54,12 +58,13 @@ document.getElementById("startButton").addEventListener("click", function (){
 )
 //timer for the quiz
 var time = 90;
+var score = 0
 
 function quizTimer() {
     time--;
     document.getElementById("timerElement").innerHTML = time;
     if (time === 0 || quizQs.length === questionsPage) {
-        clearInterval(timer);
+        clearInterval(time);
         quizOver();
     }
 }
@@ -73,23 +78,56 @@ function showQuestions() {
     questionHead.innerHTML = currentQuestion.question;
     for (i = 0; i < currentQuestion.choices.length; i++){
         console.log(currentQuestion.choices[i])
-        answerDiv.innerHTML = "<p>"+currentQuestion.choices[i]+"</p>";
+        answerDiv1.innerHTML = "<p>"+currentQuestion.choices[0]+"</p>";
+        answerDiv2.innerHTML = "<p>"+currentQuestion.choices[1]+"</p>";
+        answerDiv3.innerHTML = "<p>"+currentQuestion.choices[2]+"</p>";
+        answerDiv4.innerHTML = "<p>"+currentQuestion.choices[3]+"</p>";
     }
+
+    answerDiv1.addEventListener("click", function (event) {
+        checkAnswer(event);
+      })
+    answerDiv2.addEventListener("click", function (event) {
+        checkAnswer(event);
+      })
+    answerDiv3.addEventListener("click", function (event) {
+        checkAnswer(event);
+      })
+    answerDiv4.addEventListener("click", function (event) {
+        checkAnswer(event);
+      })
 }
 
+//Event listeners for answer choices
+
+
 // //check answer function
-// function checkAnswer(userAnswer){
-//     if(userAnswer == currentQuestion.rightOption){
-//         console.log("correct!");
-//         currentQIndex++;
-//     }else{
-//         console.log("incorrect!");
-//         currentQIndex++;
-//     }
+var score = 0
+var result = document.createElement("p");
 
-// }
-
-
+function checkAnswer(event) {
+    event.preventDefault();
+  
+    var answer = event.currentTarget.dataset.choices;
+    var correctAnswer = null;
+    
+  
+    if (answer === rightOption) {
+    optionSelection.textContent = "Correct!"; // If correct, say correct
+    } else {
+    optionSelection.textContent = "Wrong!"; // If wrong, say wrong & deduct 10 points
+        time -= 10
+        if (time < 0) {
+            time = 0;
+        }
+    }
+    if (quizQs.length === currentQIndex+1) {
+      quizEnd(); // If it has gone through all questions, show final score
+      return; // If not, print the next question
+    }
+    currentQIndex++;
+    showQuestions();
+  }
 
 
 //function to keep score during the quiz
@@ -103,45 +141,7 @@ hideResults();
 
 
 
-// //show questions
-// function questionDisplay() {
-  
-
-//check user input for the right option
-// function checkOption(event) {
-//     var option = event.currentTarget.dataset.checkAnswer
-    
-// }
-
-// //results page
-
-
-
-// //input initials
-
-
-// //scoreboard
-
-
-// //EVENT LISTENERS 
-// function questionDisplay(){
-//     optionA.addEventListener("click", function (event){
-//         checkOption(event);
-//     })
-//     optionB.addEventListener("click", function (event){
-//         checkOption(event);
-//     })
-//     optionC.addEventListener("click", function (event){
-//         checkOption(event);
-//     })
-//     optionD.addEventListener("click", function (event){
-//         checkOption(event);
-//     })
-// }
-
-// function quizStart(){
-//     startButton.addEventListener("click", function(){
-//         quizStart()
-//         console.log("start");
-//     })
-// }
+function endQuiz() {
+    resultsPage.style.display = "block";
+    questionsPage.style.display = "none";
+}
