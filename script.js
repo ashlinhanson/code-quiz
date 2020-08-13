@@ -10,9 +10,6 @@ var questionsPage = document.getElementById("questionsPage");
 var questionHead = document.getElementById("questionHead");
 // answer choice buttons/variables
 var answerDiv = document.getElementById("answers");
-var optionB = document.getElementById("second");
-var optionC = document.getElementById("third");
-var optionD = document.getElementById("fourth");
 var optionSelection = document.getElementById("optionSelection");
 var rightOption
 
@@ -90,10 +87,11 @@ function checkAnswer(userAnswer){
 // function questionDisplay() {
   
 
-// //check user input for the right option
-// function checkOption(event) {
+//check user input for the right option
+function checkOption(event) {
+    var option = event.currentTarget.dataset.checkAnswer
     
-// }
+}
 
 // //results page
 
