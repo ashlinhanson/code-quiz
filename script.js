@@ -7,8 +7,6 @@ var startButton = document.getElementById("startButton");
 
 // question pages
 var questionsPage = document.getElementById("questionsPage");
-var questionHead = document.getElementById("questionHead");
-// answer choice buttons/variables
 var answerDiv1 = document.getElementById("first");
 var answerDiv2 = document.getElementById("second");
 var answerDiv3 = document.getElementById("third");
@@ -25,20 +23,17 @@ var currentQIndex = 0;
 var quizQs = [
     {
         question : "What does JavaScript control?",
-            choices : ["a. Structure", "b. Style", "c. Behavior", "d. Aesthetic"],
-            rightOption : "c. Behavior"
+        choices : ["a. Structure", "b. Style", "c. Behavior", "d. Aesthetic"],
     },{
         question : "What is a Boolean?",
         choices : ["a. A true or false statement", "b. A conditional statement", "c. Something", "d. Something"],
-            rightOption : "a. A true or false statement"
     },{
         question : "Who invented JavaScript?",
         choices : ["a. Elon Musk", "b. Mitchell Baker", "c. Bill Gates", "d. Brenden Eich"],
-            rightOption : "d. Brenden Eich"
       }
 ];
-var rightOption = quizQs.rightOption;
 
+var correctAnswers = ["c. Behavior", "a. A true or false statement", "d. Brenden Eich"];
 // for (i = 0; i < quizQs.length; i++){
 //     console.log(quizQs[i].question)
 // }
@@ -65,24 +60,24 @@ function quizTimer() {
     document.getElementById("timerElement").innerHTML = time;
     if (time === 0 || quizQs.length === questionsPage) {
         clearInterval(time);
-        quizOver();
+        endQuiz();
     }
 }
 //show the questions
 function showQuestions() { 
 
     //make the questions appear first
+
     questionsPage.style.display = "block";
+    resultsPage.style.display = "none";
+    var questionHead = document.getElementById("questionHead");
+    questionHead.innerHTML = quizQs[currentQIndex].question;
+        // console.log(currentQuestion.choices[i])
+    answerDiv1.innerHTML = quizQs[currentQIndex].choices[0];
+    answerDiv2.innerHTML = quizQs[currentQIndex].choices[1];
+    answerDiv3.innerHTML = quizQs[currentQIndex].choices[2];
+    answerDiv4.innerHTML = quizQs[currentQIndex].choices[3];
     
-    let currentQuestion = quizQs[currentQIndex]; //global variable
-    questionHead.innerHTML = currentQuestion.question;
-    for (i = 0; i < currentQuestion.choices.length; i++){
-        console.log(currentQuestion.choices[i])
-        answerDiv1.innerHTML = "<p>"+currentQuestion.choices[0]+"</p>";
-        answerDiv2.innerHTML = "<p>"+currentQuestion.choices[1]+"</p>";
-        answerDiv3.innerHTML = "<p>"+currentQuestion.choices[2]+"</p>";
-        answerDiv4.innerHTML = "<p>"+currentQuestion.choices[3]+"</p>";
-    }
 
     answerDiv1.addEventListener("click", function (event) {
         checkAnswer(event);
@@ -105,29 +100,32 @@ function showQuestions() {
 var score = 0
 var result = document.createElement("p");
 
-function checkAnswer(event) {
-    event.preventDefault();
-  
-    var answer = event.currentTarget.dataset.choices;
-    var correctAnswer = null;
-    
-  
-    if (answer === rightOption) {
-    optionSelection.textContent = "Correct!"; // If correct, say correct
-    } else {
-    optionSelection.textContent = "Wrong!"; // If wrong, say wrong & deduct 10 points
-        time -= 10
+function checkAnswer (event){
+    var choice = event.currentTarget.innerHTML;
+    // if they choose correctly, give them points
+    if (quizQs[currentQIndex] === correctAnswers[currentQIndex]){
+        result.innerHTML = "Correct answer!";
+        score += 10;
+    } else { //if they choose incorrectly, deduct points and time left on the timer
+        result.innerHTML = "Wrong answer!";
+        score -= 10;
         if (time < 0) {
             time = 0;
+            clearInterval(quizTimer);
+        } else {
+            time -= 10;
         }
     }
-    if (quizQs.length === currentQIndex+1) {
-      quizEnd(); // If it has gone through all questions, show final score
-      return; // If not, print the next question
+    // if they've gone through all the questions, make the quiz stop and input high score
+    if (quizQs.length - 1 === correctAnswers){
+        endQuiz();
+        return;
+    } else { //if there's more questions, keep going
+        quizQs++;
+        showQuestions();
     }
-    currentQIndex++;
-    showQuestions();
-  }
+}
+
 
 
 //function to keep score during the quiz
