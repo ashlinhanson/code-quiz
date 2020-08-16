@@ -52,10 +52,16 @@
 
     </div>
     <!--the page when the quiz is complete-->
-    <div id = "resultsPage">
-        <h3 id = "resultsHead">Great job!</h3>
+    <div class="container-md col-md-6 rounded p-3 mx-auto my-4 text-center bg-light" id="resultsPage">
+        <h3 class="display-4 mt-n4">Here's how you did!</h3>
+        <hr class="my-4">
         <div id = "totalScore"></div>
-
+            <form>
+                <div class="form-group col-md-3 mx-auto my-4">
+                    <input type="text" class="form-control text-center" id="userInitials" placeholder="AH">
+                </div>
+            </form>
+            <button type="button" class="btn btn-saveBtn">Save it!</button>
     </div>
 
 
