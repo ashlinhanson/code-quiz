@@ -1,0 +1,13 @@
+#timerElement {
+    color : white;
+}  
+
+body {
+    background-color : darkcyan;
+    font-family: 'Jaldi', sans-serif;
+}
+
+#retakeBtn, #saveBtn, #startButton, #questionHead {
+    background-color : lavender;
+    color : black;
+}

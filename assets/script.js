@@ -13,15 +13,19 @@ var quizQs = [
     {
         question : ["What does JavaScript control?"],
         choices : ["a. Structure", "b. Style", "c. Behavior", "d. Aesthetic"],
+        answer : ["c. Behavior"],
     },{
         question : ["What is a Boolean?"],
-        choices : ["a. A true or false statement", "b. A conditional statement", "c. Something", "d. Something"],
+        choices : ["a. A true or false statement", "b. A conditional statement", "c. A number", "d. A ghost"],
+        answer : ["c. A true or false statement"],
     },{
         question : ["Who invented JavaScript?"],
         choices : ["a. Elon Musk", "b. Mitchell Baker", "c. Bill Gates", "d. Brenden Eich"],
+        answer : ["d, Brenden Eich"],
     },{
         question : ["What type of data does an Array hold in JavaScript?"],
         choices : ["Booleans", "Strings", "Other Arrays", "All of the above"],
+        answer : ["d. All of the above"],
       }
 ];
 var correctAnswers = ["c. Behavior", "a. A true or false statement", "d. Brenden Eich", "d. All of the above"];
@@ -84,58 +88,71 @@ function showQuestions() {
     var choiceMessage = document.createElement("p");
     document.getElementById("questionsPage").appendChild(choiceMessage);
 
-    //correct choice message
-    function rightChoice() {
-        choiceMessage.innerHTML = "Correct!";
-        score += 25;
-        currentQIndex++;
-        showQuestions();
-    }
 
-    //incorrect choice message + consequences
-    function wrongChoice() {
-        choiceMessage.innerHTML = "Incorrect!";
-        score -= 25;
-        currentQIndex++;
-        if (time < 0) {
-                time = 0;
-                clearInterval(interval);
-            } else {
-                time -= 10;
-            }
-            showQuestions();
-    }
+    //original code that only produced correct answer feedback
+    // //correct choice message
+    // function rightChoice() {
+    //     choiceMessage.innerHTML = "Correct!";
+    //     score += 25;
+    //     currentQIndex++;
+    //     showQuestions();
+    // }
 
+    // //incorrect choice message + consequences
+    // function wrongChoice() {
+    //     choiceMessage.innerHTML = "Incorrect!";
+    //     currentQIndex++;
+    //     if (time < 0) {
+    //             time = 0;
+    //             clearInterval(interval);
+    //         } else {
+    //             time -= 25;
+    //         }
+    //         showQuestions();
+    // }
+
+    //current function that only produces incorrect answer feedback
+    function questionClick() {
+        // check if user guessed wrong
+        if (this.value !== correctAnswers) {
+          // penalize time
+          time -= 25;
+      
+          if (time < 0) {
+            time = 0;
+          }
+      
+          choiceMessage.textContent = "Incorrect!";
+        } else {(this.value === correctAnswers);
+
+          choiceMessage.textContent = "Correct!";
+          score += 25;
+        }
+      
+        currentQIndex++;
+      
+        // check if we've run out of questions
+        if (currentQIndex === quizQs.length) {
+          endQuiz();
+        } else {
+          showQuestions();
+        }
+      }
+      
     
 
             //Event listeners for answer choices
             answerDiv1.addEventListener("click", function () {
-                if (correctAnswers[0]){
-                    rightChoice();
-                }else {
-                   wrongChoice();
-                }
+               questionClick();
             });
             answerDiv2.addEventListener("click", function () {
-                if (correctAnswers[1]){
-                    rightChoice();
-                }else {
-                  wrongChoice();
-                }
+                questionClick();
             });
             answerDiv3.addEventListener("click", function () {
-                if (correctAnswers[2]){
-                    rightChoice();
-                }else {
-                   wrongChoice();
-                }
+                questionClick();
             });
             answerDiv4.addEventListener("click", function () {
-                if (correctAnswers[3]){
-                    rightChoice();
-                }else {
-                    wrongChoice();
-                }
+                questionClick();
             });
             saveBtn.addEventListener("click", function() {
 
@@ -176,7 +193,7 @@ function scores() {
     for (var i = 0; i < userScore.length; i++){
         var scoreItem = document.createElement("li");
         scoreItem.textContent = userScore[i][0] + " - " + userScore[i][1];
-        scoreList.appendChild(tag);
+        scoreList.appendChild(scoreItem);
     }
 }
 
