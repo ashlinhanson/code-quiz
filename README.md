@@ -32,9 +32,9 @@ The following animation demonstrates the application functionality:
 
 ### Review
 
-You are required to submit the following for review:
+Here are the following for review:
 
-* The URL of the functional, deployed application.
+* https://ashlinhanson.github.io/code-quiz/
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+* https://github.com/ashlinhanson/code-quiz
 

@@ -1,7 +1,6 @@
 // Declaring some variables
 // first page
 var introPage = document.getElementById("introPage");
-var startButton = document.getElementById("startButton");
 // question pages
 var questionsPage = document.getElementById("questionsPage");
 var answerDiv1 = document.getElementById("first");
@@ -10,7 +9,7 @@ var answerDiv3 = document.getElementById("third");
 var answerDiv4 = document.getElementById("fourth");
 // results variables
 var resultsPage = document.getElementById("resultsPage");
-var resultsHead = document.getElementById("resultsHead");
+var saveBtn = document.getElementById("saveBtn");
 
 var currentQIndex = 0;
 // array for questions
@@ -43,14 +42,15 @@ hideResults();
 //make intro page hidden to display questions
 document.getElementById("startButton").addEventListener("click", function (){
     introPage.style.display = "none";
-    window.setInterval(quizTimer, 1000)
+    window.setInterval(quizTimer, 1000);
     showQuestions();
 }
-)
+);
 //timer for the quiz
 var time = 90;
 var score = 0;
 var interval = setInterval(time, 1000);
+
 
 function quizTimer() {
     time--;
@@ -79,7 +79,7 @@ function showQuestions() {
     if (currentQIndex === 4) {
         endQuiz();
         }
-};
+}
 
 
     //the feedback for the user choice(incorrect or correct)
@@ -88,11 +88,14 @@ function showQuestions() {
 
     //correct choice message
     function rightChoice() {
+        var i = 0; i < correctAnswers.length; i++;{
+            correctAnswers[i];
+        }
         choiceMessage.innerHTML = "Correct!";
         score += 5;
         currentQIndex++;
         showQuestions();
-    };
+    }
 
     //incorrect choice message + consequences
     function wrongChoice() {
@@ -104,54 +107,62 @@ function showQuestions() {
                 clearInterval(interval);
             } else {
                 time -= 10;
-            };
+            }
             showQuestions();
-    };
+    }
 
     
 
             //Event listeners for answer choices
             answerDiv1.addEventListener("click", function () {
-                if (currentQIndex === 3){
+                if (correctAnswers[0]){
                     rightChoice();
                 }else {
                     wrongChoice();
                 }
             });
             answerDiv2.addEventListener("click", function () {
-                if (currentQIndex === 1){
+                if (correctAnswers[1]){
                     rightChoice();
                 }else {
                     wrongChoice();
                 }
             });
             answerDiv3.addEventListener("click", function () {
-                if (currentQIndex === 4){
+                if (correctAnswers[2]){
                     rightChoice();
                 }else {
                     wrongChoice();
                 }
             });
             answerDiv4.addEventListener("click", function () {
-                if (currentQIndex === 4){
+                if (correctAnswers[3]){
                     rightChoice();
                 }else {
                     wrongChoice();
                 }
             });
+            saveBtn.addEventListener("click", function(){
+                pastScores.push({score, userInitials});
+                localStorage.setItem("userInitials", score);
+                window.location.replace("./highscores.html");
+            });
 
 
-var score = 0
-var result = document.createElement("p");
-
-//function to keep score during the quiz
+var score = 0;
 
 function hideResults() {
     resultsPage.style.display = "none";
 }
 
 
+var userInitials = "";
+var pastScores = {};
 
+function storeFinalScore() {
+    localStorage.setItem("totalScore", JSON.stringify(totalScore));
+    endQuiz();
+}
 
 
 function endQuiz() {
