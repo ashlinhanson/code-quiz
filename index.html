@@ -1,75 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Code Quiz!</title>
     <!--bootstrap link-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <!--link to CSS and Reset-->
-    <link rel="stylesheet" href="assets/reset.css">
-    <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="assets/reset.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
     <!--nav bar with high scores link and timer-->
     <nav class="navbar navbar-dark bg-dark">
-         <p id="timerElement">Time: 90</p> 
+      <p id="timerElement">Time: 90</p>
     </nav>
     <!--the introduction to the quiz-->
     <div class="container-md jumbotron text-center mt-5" id="introPage">
-        <h1 class="display-4" id="introHead">Let's test your JavaScript knowledge!</h1>
-        <p class="lead">How much do you really know about JavaScript? We're going to find out.</p>
-            <p> Once you start this quiz, you will answer each question. 
-            For each correct answer you will have 5 points added to your score.</p>
-            <p>And for each incorrect answer, your time remaining will be deducted by 25 seconds!</p>
-        <hr class="my-4">
-        <a class="btn btn-lg btn-secondary" id="startButton" role="button">Let's go!</a>
-    </div>
-             
-    <!--page for questions-->
-    <div class="container-md col-md-10 rounded p-3 mx-auto my-4 text-center bg-light" id="questionsPage">
-        <h2 class="text-dark text-wrap p-3" id="questionHead"></h2>
-            <ul class="list-group text-center mx-auto">
-                <li class="list-group-item list-group-item list-group-item-action text-center">
-                    <button type="button" class="btn questionButton" id="first"></button>
-                </li>
-                <li class="list-group-item list-group-item list-group-item-action text-center">
-                    <button type="button" class="btn questionButton" id="second"></button>
-                </li>
-                <li class="list-group-item list-group-item list-group-item-action text-center">
-                    <button type="button" class="btn questionButton" id="third"></button>
-                </li>
-                <li class="list-group-item list-group-item list-group-item-action text-center">
-                    <button type="button" class="btn questionButton" id="fourth"></button>
-                </li>
-            </ul>
-    </div>  
-    <!--the page when the quiz is complete-->
-    <div class="container-md col-md-10 rounded p-3 mx-auto my-4 text-center bg-light" id="scorePage">
-        <h3 class="display-4 mt-n4">Here's how you did!</h3>
-        <hr class="my-4">
-        <div id = "totalScore"></div>
-            <form>
-                <div class="form-group col-md-3 mx-auto my-4">
-                    <input type="text" class="form-control text-center" id="userInitials" placeholder="Initials">
-                </div>
-            </form>
-            <button type="button" class="btn btn-save" id="saveBtn">Save it!</button>
-    
-        <div class="container-md col-md-10 rounded p-3 mx-auto my-4 text-center bg-light">
-            <h6 class="display-4 mt-n4">High Scores</h6>
-            <ul id="scoreList">
-            </ul>
-            <br><br><br>
-            <button type="button" class="btn btn-retake" id="retakeBtn">Retake the Quiz</button>
-        </div>
+      <h1 class="display-4" id="introHead">
+        Let's test your JavaScript knowledge!
+      </h1>
+      <p class="lead">
+        How much do you really know about JavaScript? We're going to find out.
+      </p>
+      <p>
+        Once you start this quiz, you will answer each question. For each
+        correct answer you will have 5 points added to your score.
+      </p>
+      <p>
+        And for each incorrect answer, your time remaining will be deducted by
+        25 seconds!
+      </p>
+      <hr class="my-4" />
+      <a class="btn btn-lg btn-secondary" id="startButton" role="button"
+        >Let's go!</a
+      >
     </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Jaldi&family=Roboto+Condensed:ital,wght@0,300;1,300&display=swap" rel="stylesheet">   
-<script src="assets/script.js"></script>
-</body>
+    <!--page for questions-->
+    <div
+      class="container-md col-md-10 rounded p-3 mx-auto my-4 text-center bg-light"
+      id="questionsPage"
+    >
+      <h2 class="text-dark text-wrap p-3" id="questionHead"></h2>
+      <ul class="list-group text-center mx-auto">
+        <li
+          class="list-group-item list-group-item list-group-item-action text-center"
+        >
+          <button type="button" class="btn questionButton" id="first"></button>
+        </li>
+        <li
+          class="list-group-item list-group-item list-group-item-action text-center"
+        >
+          <button type="button" class="btn questionButton" id="second"></button>
+        </li>
+        <li
+          class="list-group-item list-group-item list-group-item-action text-center"
+        >
+          <button type="button" class="btn questionButton" id="third"></button>
+        </li>
+        <li
+          class="list-group-item list-group-item list-group-item-action text-center"
+        >
+          <button type="button" class="btn questionButton" id="fourth"></button>
+        </li>
+      </ul>
+    </div>
+    <!--the page when the quiz is complete-->
+    <div
+      class="container-md col-md-10 rounded p-3 mx-auto my-4 text-center bg-light"
+      id="scorePage"
+    >
+      <h3 class="display-4 mt-n4">Here's how you did!</h3>
+      <hr class="my-4" />
+      <div id="totalScore"></div>
+      <form>
+        <div class="form-group col-md-3 mx-auto my-4">
+          <input
+            type="text"
+            class="form-control text-center"
+            id="userInitials"
+            placeholder="Initials"
+          />
+        </div>
+      </form>
+      <button type="button" class="btn btn-save" id="saveBtn">Save it!</button>
+
+      <div
+        class="container-md col-md-10 rounded p-3 mx-auto my-4 text-center bg-light"
+      >
+        <h6 class="display-4 mt-n4">High Scores</h6>
+        <ul id="scoreList"></ul>
+        <br /><br /><br />
+        <button type="button" class="btn btn-retake" id="retakeBtn">
+          Retake the Quiz
+        </button>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jaldi&family=Roboto+Condensed:ital,wght@0,300;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="assets/script.js"></script>
+  </body>
 </html>
