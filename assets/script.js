@@ -11,24 +11,23 @@ var saveBtn = document.getElementById("saveBtn");
 var currentQIndex = 0;
 var quizQs = [
     {
-        question : ["What does JavaScript control?"],
+        question : "What does JavaScript control?",
         choices : ["a. Structure", "b. Style", "c. Behavior", "d. Aesthetic"],
-        answer : ["c. Behavior"],
+        answer : "c. Behavior",
     },{
-        question : ["What is a Boolean?"],
+        question : "What is a Boolean?",
         choices : ["a. A true or false statement", "b. A conditional statement", "c. A number", "d. A ghost"],
-        answer : ["c. A true or false statement"],
+        answer : "c. A true or false statement",
     },{
-        question : ["Who invented JavaScript?"],
+        question : "Who invented JavaScript?",
         choices : ["a. Elon Musk", "b. Mitchell Baker", "c. Bill Gates", "d. Brenden Eich"],
-        answer : ["d, Brenden Eich"],
+        answer : "d, Brenden Eich",
     },{
-        question : ["What type of data does an Array hold in JavaScript?"],
-        choices : ["Booleans", "Strings", "Other Arrays", "All of the above"],
-        answer : ["d. All of the above"],
+        question : "What type of data does an Array hold in JavaScript?",
+        choices : ["a. Booleans", "b. Strings", "c. Other Arrays", "d. All of the above"],
+        answer : "d. All of the above",
       }
 ];
-var correctAnswers = ["c. Behavior", "a. A true or false statement", "d. Brenden Eich", "d. All of the above"];
 //functions begin
 
 //hides questions while on intro page.
@@ -80,6 +79,11 @@ function showQuestions() {
     answerDiv3.innerHTML = quizQs[currentQIndex].choices[2];
     answerDiv4.innerHTML = quizQs[currentQIndex].choices[3];
 
+    answerDiv1.value = quizQs[currentQIndex].choices[0];
+    answerDiv2.value = quizQs[currentQIndex].choices[1];
+    answerDiv3.value = quizQs[currentQIndex].choices[2];
+    answerDiv4.value = quizQs[currentQIndex].choices[3];
+
         }
 }
 
@@ -112,47 +116,22 @@ function showQuestions() {
     // }
 
     //current function that only produces incorrect answer feedback
-    function questionClick() {
-        // check if user guessed wrong
-        if (this.value !== correctAnswers) {
-          // penalize time
-          time -= 25;
-      
-          if (time < 0) {
-            time = 0;
-          }
-      
-          choiceMessage.textContent = "Incorrect!";
-        } else {(this.value === correctAnswers);
-
-          choiceMessage.textContent = "Correct!";
-          score += 25;
-        }
-      
-        currentQIndex++;
-      
-        // check if we've run out of questions
-        if (currentQIndex === quizQs.length) {
-          endQuiz();
-        } else {
-          showQuestions();
-        }
-      }
+    
       
     
 
             //Event listeners for answer choices
             answerDiv1.addEventListener("click", function () {
-               questionClick();
+               questionClick(answerDiv1.value);
             });
             answerDiv2.addEventListener("click", function () {
-                questionClick();
+                questionClick(answerDiv2.value);
             });
             answerDiv3.addEventListener("click", function () {
-                questionClick();
+                questionClick(answerDiv3.value);
             });
             answerDiv4.addEventListener("click", function () {
-                questionClick();
+                questionClick(answerDiv4.value);
             });
             saveBtn.addEventListener("click", function() {
 
@@ -169,6 +148,33 @@ function showQuestions() {
                 }
                 storeScores();
             });
+    function questionClick(value) {
+        // check if user guessed wrong
+        console.log(value);
+        if (value !== quizQs[currentQIndex].answer) {
+            // penalize time
+            time -= 25;
+        
+            if (time < 0) {
+            time = 0;
+            }
+        
+            choiceMessage.textContent = "Incorrect!";
+        } else {
+
+            choiceMessage.textContent = "Correct!";
+            score += 25;
+        }
+        
+        currentQIndex++;
+        
+        // check if we've run out of questions
+        if (currentQIndex === quizQs.length) {
+            endQuiz();
+        } else {
+            showQuestions();
+        }
+        }
 
 
 var userScore = [];
